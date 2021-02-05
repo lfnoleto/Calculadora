@@ -5,7 +5,7 @@ import Display from './components/Desplay'
 const App =()=>{
 
     const {useDiplay,SetDisplay} = useState(0)
-
+    const {useClear,SetClear} = useState(0)
 
     return (
        <View style={styles.buttons}>
