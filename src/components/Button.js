@@ -25,14 +25,14 @@ const styles = StyleSheet.create({
     }
 })
 
-export default props => {
+export default App =(props) => {
     const styleButton = [styles.button]
     if(props.double) styleButton.push(styles.buttonDouble)
     if(props.triple) styleButton.push(styles.OperationButtun)
     if(props.operation) styleButton.push(styles.triple)
 
     return(
-        <TouchableHighlight onPress={props.onPress}>
+        <TouchableHighlight onPress={props.onClick}>
             <Text style={styles.button}>{props.label}</Text>
         </TouchableHighlight>
 
