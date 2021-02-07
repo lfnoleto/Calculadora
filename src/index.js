@@ -2,16 +2,26 @@ import React,{useState}from 'react'
 import {Text,View,ScrollView,SafeAreaView,StyleSheet} from 'react-native'
 import Button from './components/Button'
 import Display from './components/Desplay'
+
 const App =()=>{
 
     const {useDiplay,SetDisplay} = useState(0)
     const {useClear,SetClear} = useState(0)
+    const setValue =(valor)=>{
+        SetDisplay(valor)
+    }
+    const setClean =()=>{
+        setClean('0')
+    }  
 
+    const setOperation = ()=>{
+
+    }
     return (
        <View style={styles.buttons}>
            <Display value={useDiplay}/>
            <View style={styles.buttons}>
-               <Button label='AC'/>
+               <Button label='AC' triple onClick={() => clearMemory()}/>
                <Button label='/'/>
                <Button label='7'/>
                <Button label='8' />
