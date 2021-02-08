@@ -1,81 +1,63 @@
-import React,{useState}from 'react'
-import {Text,View,ScrollView,SafeAreaView,StyleSheet} from 'react-native'
-import Button from './components/Button'
-import Display from './components/Desplay'
-
-const App =()=>{
-
-    const [useDiplay,SetDisplay] = useState('0')
-    const [useClear,SetClear] = useState(0)
-    const setValue =(valor)=>{
-        SetDisplay(valor)
-    }
-    const setClean =_=> SetClear(0)
+import React,{useState} from 'react'
+import {StatusBar,StyleSheet,Text,View,TouchableOpacity} from 'react-native'
+import Icon from 'react-native-vector-icons/Feather';
 
 
-    const setOperation = ()=>{
+export default function App(){
 
-    }
-    return (
-       <View style={styles.buttons}>
-           <View style={styles.display}>
-               <Text style={styles.displayValue}>
-                    {useDiplay}
-               </Text>
-           </View>
-           <View  style={styles.buttons}>
-               <Button triple label='AC' onClick={() => SetDisplay(0)}/>
-               <Button label='/'onClick={() => SetDisplay(8)}/>
-               <Button label='7' onClick={() => SetDisplay(7)}/>
-               <Button label='8' onClick={() => SetDisplay(8)}/>
-               <Button label='9'onClick={() => SetDisplay(9)}/>
-               <Button label='*'onClick={() => SetDisplay('X')}/>
-               <Button label='4'onClick={() => SetDisplay(4)}/>
-               <Button label='5'onClick={() => SetDisplay(5)}/>
-               <Button label='6'onClick={() => SetDisplay(6)}/>
-               <Button label='-'onClick={() => SetDisplay('-')}/>
-               <Button label='1'onClick={() => SetDisplay(1)}/>
-               <Button label='2'onClick={() => SetDisplay(2)}/>
-               <Button label='3'onClick={() => SetDisplay(3)}/>
-               <Button label='+'onClick={() => SetDisplay('+')}/>
-               <Button label='0'onClick={() => SetDisplay(0)}/>
-               <Button label='.'onClick={() => SetDisplay('.')}/>
-               <Button label='='onClick={() => SetDisplay('=')}/>
-           </View>
-       </View>
+    const [dorkMode,setDackMode] = useState(false)
+
+    const styles = StyleSheet.create({
+        conteiner:{
+            flex:1,
+            backgroundColor:'#fff',
+            alignItems:'center',
+            justifyContent:'center'
+        },
+        results:{
+            backgroundColor: dorkMode ? '#282f3b' : '#f5f5f5',
+            minWidth:280,
+            width:'100%',
+            height:'59%',
+            alignItems:'flex-end',
+            justifyContent:'flex-end',
+           
+           
+        },
+        themaButton:{
+            alignSelf:'flex-start',
+            bottom:130,
+            margin:15,
+            backgroundColor: dorkMode ? '#7b8084' : "#e5e5e5",
+            alignItems: 'center',
+            justifyContent:'center',
+            width:50,
+            height:50,
+            borderRadius:25
+        },
+        buttons:{
+            
+        },
+        resultText:{
+            margin:10,
+            fontSize:25
+        }
+    })
+
+
+    return(
+        <View >
+
+            <View style={styles.results}>
+                <TouchableOpacity style={styles.themaButton}>
+                <Icon name={dorkMode ? "sun" : "moon"} size={18} color={dorkMode ? "white" : "black"}  onPress={() => dorkMode ? setDackMode(false) : setDackMode(true)}/>
+                </TouchableOpacity>
+                <Text style={styles.resultText}>2 + 2 = 10</Text>
+            </View>
+
+            <View style={styles.buttons}>
+
+            </View>
+        </View>
     )
 }
-
-
-
-const styles = StyleSheet.create({
-
-    container:{
-        flex:1,
-    },
-
-    buttons:{
-        
-        flexDirection:'row',
-        flexWrap:'wrap'
-    },
-
-    display:{
-        flex:1,
-        padding:20,
-        justifyContent:'center',
-        backgroundColor:'rgba(0,0,0,0.6)',
-        alignItems:'flex-end'
-    },
-    displayValue:{
-        fontSize:60,
-        color:'#fff'
-    }
-})
-
-
-
-
-
-
-export default App;
